@@ -64,36 +64,36 @@ app.post('/api/onboarding', async (req, res) => {
 
     // ✅ Styled HTML Proposal Email
     const proposalHtml = `
-      <div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 30px;">
-        <div style="max-width: 600px; background: #fff; margin: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
+      <div style="font-family: 'Arial', sans-serif; background-color: #e9ecef; padding: 30px;">
+        <div style="max-width: 600px; background: #ffffff; margin: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
 
           <div style="text-align: center; margin-bottom: 30px;">
             <img src="https://onboardin.netlify.app/kingii.png" alt="Brand Logo" style="height: 60px;" />
           </div>
 
-          <h2 style="color: #222; font-size: 22px;">👋 Hello!</h2>
-          <p style="color: #555;">Thanks for submitting your website request. Here's a quick overview of what you've selected:</p>
+          <h2 style="color: #343a40; font-size: 24px;">👋 Hello!</h2>
+          <p style="color: #6c757d;">Thank you for submitting your website request. Here's a quick overview of what you've selected:</p>
 
           <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
             <tr>
-              <td style="padding: 8px; color: #666;"><strong>Website Type:</strong></td>
-              <td style="padding: 8px; color: #333;">${data.websiteType}</td>
+              <td style="padding: 10px; color: #495057;"><strong>Website Type:</strong></td>
+              <td style="padding: 10px; color: #212529;">${data.websiteType}</td>
             </tr>
             <tr>
-              <td style="padding: 8px; color: #666;"><strong>Build Method:</strong></td>
-              <td style="padding: 8px; color: #333;">${data.buildMethod}</td>
+              <td style="padding: 10px; color: #495057;"><strong>Build Method:</strong></td>
+              <td style="padding: 10px; color: #212529;">${data.buildMethod}</td>
             </tr>
             <tr>
-              <td style="padding: 8px; color: #666;"><strong>Budget:</strong></td>
-              <td style="padding: 8px; color: #333;">$${data.budget}</td>
+              <td style="padding: 10px; color: #495057;"><strong>Budget:</strong></td>
+              <td style="padding: 10px; color: #212529;">$${data.budget}</td>
             </tr>
             <tr>
-              <td style="padding: 8px; color: #666;"><strong>Deadline:</strong></td>
-              <td style="padding: 8px; color: #333;">${data.deadline}</td>
+              <td style="padding: 10px; color: #495057;"><strong>Deadline:</strong></td>
+              <td style="padding: 10px; color: #212529;">${data.deadline}</td>
             </tr>
             <tr>
-              <td style="padding: 8px; color: #666;"><strong>Features:</strong></td>
-              <td style="padding: 8px; color: #333;">
+              <td style="padding: 10px; color: #495057;"><strong>Features:</strong></td>
+              <td style="padding: 10px; color: #212529;">
                 <ul style="padding-left: 18px; margin: 0;">
                   ${featureList}
                 </ul>
@@ -101,18 +101,18 @@ app.post('/api/onboarding', async (req, res) => {
             </tr>
           </table>
 
-          <p style="color: #444; margin-top: 30px;">🎯 To move forward, please confirm and share your brand details:</p>
+          <p style="color: #343a40; margin-top: 30px;">🎯 To move forward, please confirm and share your brand details:</p>
 
           <div style="text-align: center; margin: 30px 0;">
             <a href="https://onboardin.netlify.app/BrandingForm/${saved._id}"
-              style="background: #4CAF50; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+              style="background: #007bff; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
               ✅ Approve & Continue
             </a>
           </div>
 
           <div style="margin-top: 40px; text-align: center;">
-            <p style="color: #666;">Best regards,</p>
-            <p style="font-weight: bold; color: #333;">Kingsley</p>
+            <p style="color: #6c757d;">Best regards,</p>
+            <p style="font-weight: bold; color: #212529;">Kingsley</p>
             <img src="https://onboardin.netlify.app/kingii.png" alt="Kingsley" style="height: 60px; border-radius: 50%; margin-top: 10px;" />
           </div>
 
