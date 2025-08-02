@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const app = express();
+
+// Serve static files (like images) from /public
 app.use('/public', express.static('public'));
 
 app.use(cors());
@@ -60,35 +62,61 @@ app.post('/api/onboarding', async (req, res) => {
       ? data.features.map(f => `<li>${f}</li>`).join('')
       : '<li>No additional features selected</li>';
 
-    // ✅ Customized HTML Email with Branding and CTA
+    // ✅ Styled HTML Proposal Email
     const proposalHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
-        <img src="https://onboardin.netlify.app/kingii.png" alt="Brand Logo" style="height: 60px; margin-bottom: 20px;" />
+      <div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 30px;">
+        <div style="max-width: 600px; background: #fff; margin: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 30px;">
 
-        <h2 style="color: #333;">Hi there!</h2>
-        <p>Thanks for submitting your website requirements. Here's a quick summary:</p>
+          <div style="text-align: center; margin-bottom: 30px;">
+            <img src="https://onboardin.netlify.app/kingii.png" alt="Brand Logo" style="height: 60px;" />
+          </div>
 
-        <ul style="line-height: 1.6;">
-          <li><strong>Website Type:</strong> ${data.websiteType}</li>
-          <li><strong>Build Method:</strong> ${data.buildMethod}</li>
-          <li><strong>Budget:</strong> $${data.budget}</li>
-          <li><strong>Deadline:</strong> ${data.deadline}</li>
-          <li><strong>Features:</strong>
-            <ul>${featureList}</ul>
-          </li>
-        </ul>
+          <h2 style="color: #222; font-size: 22px;">👋 Hello!</h2>
+          <p style="color: #555;">Thanks for submitting your website request. Here's a quick overview of what you've selected:</p>
 
-        <p>We're excited to help! To get started, please confirm your project and share branding details.</p>
+          <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 8px; color: #666;"><strong>Website Type:</strong></td>
+              <td style="padding: 8px; color: #333;">${data.websiteType}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; color: #666;"><strong>Build Method:</strong></td>
+              <td style="padding: 8px; color: #333;">${data.buildMethod}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; color: #666;"><strong>Budget:</strong></td>
+              <td style="padding: 8px; color: #333;">$${data.budget}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; color: #666;"><strong>Deadline:</strong></td>
+              <td style="padding: 8px; color: #333;">${data.deadline}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; color: #666;"><strong>Features:</strong></td>
+              <td style="padding: 8px; color: #333;">
+                <ul style="padding-left: 18px; margin: 0;">
+                  ${featureList}
+                </ul>
+              </td>
+            </tr>
+          </table>
 
-        <div style="text-align: center; margin: 30px 0;">
-          <a href="https://onboardin.netlify.app/brandingForm/${saved._id}"
-            style="background: #007bff; color: white; text-decoration: none; padding: 12px 20px; border-radius: 5px;">
-            ✅ Approve & Continue
-          </a>
+          <p style="color: #444; margin-top: 30px;">🎯 To move forward, please confirm and share your brand details:</p>
+
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="https://onboardin.netlify.app/BrandingForm/${saved._id}"
+              style="background: #4CAF50; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+              ✅ Approve & Continue
+            </a>
+          </div>
+
+          <div style="margin-top: 40px; text-align: center;">
+            <p style="color: #666;">Best regards,</p>
+            <p style="font-weight: bold; color: #333;">Kingsley</p>
+            <img src="https://onboardin.netlify.app/kingii.png" alt="Kingsley" style="height: 60px; border-radius: 50%; margin-top: 10px;" />
+          </div>
+
         </div>
-
-        <p>Talk soon,<br/> <strong> kiNGSLEY</strong></p>
-        <img src="https://yourdomain.com/you.jpg" alt="Your photo" style="height: 60px; border-radius: 50%; margin-top: 10px;" />
       </div>
     `;
 
@@ -149,4 +177,4 @@ app.post('/api/client-details/:id', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
