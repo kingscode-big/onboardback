@@ -32,7 +32,7 @@ const onboardingSchema = new mongoose.Schema({
 });
 
 const Onboarding = mongoose.model('Boarding', onboardingSchema);
-
+ 
 // ✅ Nodemailer Setup
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -60,7 +60,9 @@ app.post('/api/onboarding', async (req, res) => {
 
     // Save to DB
     const saved = await Onboarding.create(data);
+    console.log("✅ Branding Link:", `https://onboardin.netlify.app/branding/${saved._id}`);
 
+ 
     // Generate HTML list for email
     const featureList = data.features.length > 0
       ? data.features.map(f => `<li>${f}</li>`).join('')
@@ -92,7 +94,8 @@ app.post('/api/onboarding', async (req, res) => {
           <p style="color: #343a40; margin-top: 30px;">🎯 To move forward, please confirm and share your brand details:</p>
 
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://onboardin.netlify.app/branding/${saved._id}"
+            <a 
+              href="https://onboardin.netlify.app/branding/${saved._id}"
               style="background: #007bff; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
               ✅ Approve & Continue
             </a>
