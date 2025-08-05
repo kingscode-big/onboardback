@@ -95,7 +95,7 @@ app.post('/api/onboarding', async (req, res) => {
 
           <div style="text-align: center; margin: 30px 0;">
             <a 
-              href="https://onboardin.netlify.app/branding/${saved._id}"
+              href="https://onboardin.netlify.app/branding/${_id}"
               style="background: #007bff; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
               ✅ Approve & Continue
             </a>
